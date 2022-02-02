@@ -1,21 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { StatusBar } from "react-native";
+import { Provider } from "react-redux";
+import { Store } from "./redux/store";
+import { SignUpScreen } from "./screens/SignUpScreen";
+import { HomeScreen } from "./screens/HomeScreen";
+import { Login } from "./screens/Login";
+import { AboutScreen } from "./screens/About";
+
+
+const Stack = createStackNavigator();
+
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+return (
+<Provider store={Store}>
+    <NavigationContainer>
+        <StatusBar backgroundColor="#000" barStyle="light-content"/>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        <Stack.Navigator
+        screenOptions={{headerShown: false}}
+        initialRouteName="Signup">
+
+            <Stack.Screen name="Signup"component={SignUpScreen}/>
+            <Stack.Screen name="Login"component={Login}/>
+            <Stack.Screen name="Home" component={HomeScreen}/>
+            <Stack.Screen name="About"component={AboutScreen}/>
+
+        </Stack.Navigator>
+    </NavigationContainer>
+</Provider>
+);
+}
