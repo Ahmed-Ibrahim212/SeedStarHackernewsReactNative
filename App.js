@@ -8,28 +8,24 @@ import { HomeScreen } from "./screens/HomeScreen";
 import { Login } from "./screens/Login";
 import { AboutScreen } from "./screens/About";
 
-
 const Stack = createStackNavigator();
 
-
-
 export default function App() {
-return (
-<Provider store={Store}>
-    <NavigationContainer>
-        <StatusBar backgroundColor="#000" barStyle="light-content"/>
+  return (
+    <Provider store={Store}>
+      <NavigationContainer>
+        <StatusBar backgroundColor="#000" barStyle="light-content" />
 
         <Stack.Navigator
-        screenOptions={{headerShown: false}}
-        initialRouteName="Signup">
-
-            <Stack.Screen name="Signup"component={SignUpScreen}/>
-            <Stack.Screen name="Login"component={Login}/>
-            <Stack.Screen name="Home" component={HomeScreen}/>
-            <Stack.Screen name="About"component={AboutScreen}/>
-
+          screenOptions={{ headerShown: false }}
+          initialRouteName="Signup"
+        >
+          <Stack.Screen name="Signup" component={SignUpScreen} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="About" component={AboutScreen} />
         </Stack.Navigator>
-    </NavigationContainer>
-</Provider>
-);
+      </NavigationContainer>
+    </Provider>
+  );
 }
